@@ -40,11 +40,7 @@ def transcribe_audio(uploaded_file):
 
     load_dotenv()
 
-    st.write("DB username:", st.secrets["db_username"])
-st.write("DB password:", st.secrets["db_password"])
-st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
-
-    mongo_uri = os.getenv("MONGO_URI")
+    mongo_uri = st.secrets["MONGO_URI"]
     if not mongo_uri:
         raise ValueError("MONGO_URI environment variable not set")
 
