@@ -1,8 +1,8 @@
 import io
 import logging
-import os
+# import os
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from google.oauth2 import service_account
 from google.cloud import speech
 from absl import logging as absl_logging
@@ -38,14 +38,12 @@ def transcribe_audio(uploaded_file):
 
     response = client.recognize(config=config, audio=audio)
 
-    load_dotenv()
-
-    mongo_uri = st.secrets["MONGO_URI"]
-    if not mongo_uri:
-        raise ValueError("MONGO_URI environment variable not set")
+    # mongo_uri = st.secrets["MONGO_URI"]
+    # if not mongo_uri:
+    #     raise ValueError("MONGO_URI environment variable not set")
 
     # MongoDB connection
-    client = MongoClient(mongo_uri)  # Replace with your MongoDB URI
+    client = MongoClient("mongodb+srv://adityanovadianto:aditNovadianto@cluster0.x9fuvep.mongodb.net/aury?retryWrites=true&w=majority&appName=Cluster0")  # Replace with your MongoDB URI
     db = client['aury']  # Replace with your database name
     collection = db['data-transcript']  # Replace with your collection name
 
